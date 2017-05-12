@@ -1,0 +1,5 @@
+*.pyc
+*.egg-info
+ehda.egg-info/
+*/.DS_Store
+.DS_Store
