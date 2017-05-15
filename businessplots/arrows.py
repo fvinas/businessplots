@@ -64,7 +64,6 @@ def increase_arrow(
 	data_to = _data._data_from_bar(ax, bar_to)
 	bar_width = data_from[0][2]
 
-
 	if arrow_kind == 'tendancy':
 		arrow_start_x = data_from[index_from][0] + .5 * bar_width
 		arrow_start_y = data_from[index_from][3] + _style.elevation(ax, elevation_factor)
@@ -74,7 +73,7 @@ def increase_arrow(
 			arrow_start_x, arrow_start_y, arrow_end_x, arrow_end_y = _overlap.adjust_elevation(ax, arrow_start_x, arrow_start_y, arrow_end_x, arrow_end_y, _style.elevation(ax, elevation_factor))
 
 		ax.annotate("", xy=(arrow_end_x, arrow_end_y), xytext=(arrow_start_x, arrow_start_y), arrowprops=dict(arrowstyle="-|>", linewidth=1))
-		text_height = _text.text(ax, .5 * (arrow_start_x + arrow_end_x), .5 * (arrow_start_y + arrow_end_y), format_func(data_from[index_from][3], data_from[index_to][3]), kind=text_kind)
+		text_height = _text.text(ax, .5 * (arrow_start_x + arrow_end_x), .5 * (arrow_start_y + arrow_end_y), format_func(data_from[index_from][3], data_to[index_to][3]), kind=text_kind)
 
 		# Adjust limits in case we go out of the plot
 		_limits.adjust_limits(ax, arrow_start_y)
@@ -88,10 +87,12 @@ def increase_arrow(
 		text_elevation = _style.elevation(ax, elevation_factor)
 		line_elevation = 0.1 * _style.elevation(ax, elevation_factor)
 
+		# TODO: add automatic_elevation
+
 		x1 = data_from[index_from][0]
 		y1 = data_from[index_from][3]
-		x2 = data_from[index_to][0]
-		y2 = data_from[index_to][3]
+		x2 = data_to[index_to][0]
+		y2 = data_to[index_to][3]
 
 		delta = y2 - y1
 		height = max(0, delta)

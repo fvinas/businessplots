@@ -56,7 +56,7 @@ def adjust_elevation(ax, x1, y1, x2, y2, step_y):
 		nb_loops += 1
 		if nb_loops > 1000:
 			raise Exception('Too many loops while testing objects overlapping')
-		if not is_overlapping(ax, .5 * (x1 + x2), .5 * (y1 + y2)):
+		if 	not is_overlapping(ax, .5 * (x1 + x2), .5 * (y1 + y2)):
 			break
 		y1 += step_y
 		y2 += step_y
