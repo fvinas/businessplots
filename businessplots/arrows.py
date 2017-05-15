@@ -87,7 +87,7 @@ def increase_arrow(
 		text_elevation = _style.elevation(ax, elevation_factor)
 		line_elevation = 0.1 * _style.elevation(ax, elevation_factor)
 
-		# TODO: add automatic_elevation
+		text_font_size = 15
 
 		x1 = data_from[index_from][0]
 		y1 = data_from[index_from][3]
@@ -105,6 +105,10 @@ def increase_arrow(
 		plot_color = 'black'
 
 		top_y = y1 + height + text_elevation + line_elevation
+
+		if automatic_elevation:
+			text_height = 2.5*(ax.transData.inverted().transform((0,text_font_size)) - ax.transData.inverted().transform((0,0)))[1]
+			_, _, _, top_y = _overlap.adjust_elevation(ax, x1 + (x2 - x1) * .5, top_y - text_height, x1 + (x2 - x1) * .5, top_y, text_elevation)
 
 		# First vertical line
 		ax.plot([x1, x1], [y1 + line_elevation, top_y], color=plot_color, linestyle='-', linewidth=1, alpha=1)

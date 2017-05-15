@@ -14,6 +14,15 @@ Still in early stage! But feel free to test & discuss.
 ## Usage example:
 
 ```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+from businessplots import arrows
+from businessplots import formatters
+from businessplots import axis
+from businessplots import title
+
 y = [2744000, 3028000, 3257000, 3642000, 3932000, 4314000, 4604000, 5061000, 5464000, 5933000, 6312000, 6879000]
 x = [i for i, _ in enumerate(y)]
 plt.rcParams['figure.figsize'] = (16.0, 10.0)
