@@ -18,4 +18,6 @@ def pretty_title(ax = None, message = '', description = ''):
 		return None
 	if not ax:
 		ax = plt.gca()
-	ax.set_title("\n{}\n — {} — \n".format(message, description), fontsize=18)
+	# TODO: find a correct way to do this (esp. the Axes margin part)
+	ax.set_title("\n{}\n\n".format(message), fontsize=18)
+	ax.text(0.5, 1, "— {} —\n\n\n".format(description), fontsize=14, transform=ax.transAxes, ha='center', va='center')
