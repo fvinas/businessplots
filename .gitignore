@@ -1,5 +1,6 @@
 *.pyc
 *.egg-info
-ehda.egg-info/
+*.egg-info/
+dist/
 */.DS_Store
 .DS_Store
